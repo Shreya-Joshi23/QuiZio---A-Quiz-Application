@@ -6,7 +6,7 @@ import axios from "axios";
 import { RecoilRoot } from "recoil";
 import {ToastContainer} from "react-toastify"
 
-const isProductionurl=process.env.NODE_ENV==='production'?"https://quizbackend1-knln.onrender.com":"http://localhost:3000/api/v1/"
+const isProductionurl=process.env.NODE_ENV==='production'?"https://quizbackend1-knln.onrender.com/api/v1/":"http://localhost:3000/api/v1/"
 axios.defaults.baseURL = isProductionurl;
 axios.defaults.withCredentials = true;
 
