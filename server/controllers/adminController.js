@@ -61,8 +61,10 @@ const signupadmin = async (req, res) => {
         process.env.JWT_ADMIN_PASSWORD
       );
 
+      const isProduction=process.env.NODE_ENV === 'production'
+
       res.cookie("token", token, {
-        domain: "localhost",
+        domain: isProduction ? '.vercel.app' : 'localhost',
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
         secure: false,
@@ -122,8 +124,10 @@ const signinadmin = async (req, res) => {
         process.env.JWT_ADMIN_PASSWORD
       );
 
+      const isProduction=process.env.NODE_ENV === 'production'
+
       res.cookie("token", token, {
-        domain: "localhost",
+        domain:isProduction ? '.vercel.app' : 'localhost',
         httpOnly: true,
         maxAge: 24 * 60 * 60 * 1000,
         secure: false,
