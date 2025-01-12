@@ -128,10 +128,12 @@ const signinuser = async (req, res) => {
     console.log(`isProduction:${isProduction}`)
 
     res.cookie("token", token, {
+      path:"/",
       domain: isProduction ? '.vercel.app' : undefined,
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
-      secure: false,
+      secure: isProduction,
+      sameSite:"none"
     });
 
     return res.status(200).json({
