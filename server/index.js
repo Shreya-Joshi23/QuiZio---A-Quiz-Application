@@ -9,7 +9,7 @@ import cookieParser from "cookie-parser";
 const app = express();
 dotenv.config();
 
-const allowedOrigins = [process.env.FRONTEND_URL, "http://localhost:5173"];
+const allowedOrigins = ["https://quiziofrontend.vercel.app/", "http://localhost:5173"];
 
 app.use(
   cors({
