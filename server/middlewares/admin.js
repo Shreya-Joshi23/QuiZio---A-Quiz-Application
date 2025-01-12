@@ -4,7 +4,7 @@ const adminmiddleware = async (req, res, next) => {
   try {
     let token = req.headers["Authorization"]?.split(" ")[1];
     if (!token) token = req.cookies?.token;
-    console.log("Token",req.headers.cookie.substring(6))
+    console.log("Token",req.headers?.cookie?.substring(6))
     console.log("Cookie token",req.cookies.token)
     if (!token) {
       return res.status(400).json({
