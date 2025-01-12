@@ -9,10 +9,19 @@ import cookieParser from "cookie-parser";
 const app = express();
 dotenv.config();
 
-app.use(cors({credentials: true, origin: 'http://localhost:5173'}));
-  
+const allowedOrigins = [process.env.FRONTEND_URL, "http://localhost:5173"];
+
+app.use(
+  cors({
+    credentials: true,
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
+
 app.use(express.json());
-app.use(cookieParser())
+app.use(cookieParser());
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/admin", adminRouter);
 const PORT = 5000;
