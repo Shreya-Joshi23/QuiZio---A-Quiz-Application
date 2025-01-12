@@ -125,9 +125,10 @@ const signinuser = async (req, res) => {
     );
 
     const isProduction=process.env.NODE_ENV === 'production'
+    console.log(`isProduction:${isProduction}`)
 
     res.cookie("token", token, {
-      domain: isProduction ? '.vercel.app' : 'localhost',
+      domain: isProduction ? '.vercel.app' : undefined,
       httpOnly: true,
       maxAge: 24 * 60 * 60 * 1000,
       secure: false,
