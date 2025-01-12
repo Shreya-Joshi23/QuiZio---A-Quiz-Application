@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { signin } from "../helpers/apicommunicators";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import authState from "../atom/authatom";
 import userState from "../atom/useratom";
 import { useNavigate } from "react-router-dom";
@@ -15,9 +15,10 @@ const Signin = () => {
   const [formerrors, setformerrors] = useState({});
   const [isAdmin, setisAdmin] = useState(false);
   const [loading,setloading]=useState(false)
-  const setauth=useRecoilState(authState)
   const [user,setuser]=useRecoilState(userState)
   const navigate=useNavigate();
+
+  const setauth = useSetRecoilState(authState);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -132,7 +133,10 @@ const Signin = () => {
         </form>
         <p className="text-center text-sm text-gray-600 mt-4">
           Don't have an account?{" "}
-          <a href="/auth" className="text-blue-500 hover:underline" onClick={()=>setauth("signup")}>
+          <a
+            className="text-blue-500 cursor-pointer hover:underline"
+            onClick={() => setauth("signup")}
+          >
             Signup
           </a>
         </p>
