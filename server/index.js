@@ -13,7 +13,7 @@ const allowedOrigins = ["https://quiziofrontend.vercel.app", "http://localhost:5
 
 app.use(
   cors({
-    credentials: true,
+    credentials: "include",
     origin: allowedOrigins,
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
